@@ -480,29 +480,29 @@ sliderJQuery(function( $ ) {
     $.global.total = 0;
 
     $(document).ready(function () {
-        var slideWindowWidth = $('#slide-window-leaky').width();
-        var slideCount = $('#slides-list-leaky li').length;
-        var totalSlidesWidth = slideCount * slideWindowWidth;
+        var slideWindowWidth2 = $('#slide-window-leaky').width();
+        var slideCount2 = $('#slides-list-leaky li').length;
+        var totalSlidesWidth2 = slideCount2 * slideWindowWidth2;
 
-        $.global.item = 0;
-        $.global.total = slideCount;
+        $.global2.item = 0;
+        $.global2.total = slideCount2;
 
         $('.slide-leaky').css('width', slideWindowWidth + 'px');
         $('#slides-list-leaky').css('width', totalSlidesWidth + 'px');
 
         $('#left-leaky').click(function () {
             resetAutoSlide();
-            performSlide('back');
+            performSlide2('back');
         });
 
         $('#right-leaky').click(function () {
             resetAutoSlide();
-            performSlide('forward');
+            performSlide2('forward');
         });
 
     });
 
-    function performSlide(direction) {
+    function performSlide2(direction) {
         if (direction == 'back') {
             var nextSlideId = $.global.item - 1;
         }
