@@ -473,6 +473,79 @@ sliderJQuery(function( $ ) {
       }
       resetAutoSlide();
 });
+
+sliderJQuery = jQuery.noConflict();
+sliderJQuery(function( $ ) {
+    $.global = new Object();
+    $.global.total = 0;
+
+    $(document).ready(function () {
+        var slideWindowWidth = $('#slide-window-leaky').width();
+        var slideCount = $('#slides-list-leaky li').length;
+        var totalSlidesWidth = slideCount * slideWindowWidth;
+
+        $.global.item = 0;
+        $.global.total = slideCount;
+
+        $('.slide-leaky').css('width', slideWindowWidth + 'px');
+        $('#slides-list-leaky').css('width', totalSlidesWidth + 'px');
+
+        $('#left-leaky').click(function () {
+            resetAutoSlide();
+            performSlide('back');
+        });
+
+        $('#right-leaky').click(function () {
+            resetAutoSlide();
+            performSlide('forward');
+        });
+
+    });
+
+    function performSlide(direction) {
+        if (direction == 'back') {
+            var nextSlideId = $.global.item - 1;
+        }
+        if (direction == 'forward') {
+            var nextSlideId = $.global.item + 1;
+        }
+
+        if (nextSlideId == -1) {
+             
+            moveCss($.global.total - 1);
+        } else if (nextSlideId == $.global.total) {
+             
+            moveCss(0);
+        } else {
+             
+            moveCss(nextSlideId);
+        }
+    }
+
+    function moveCss(nextSlideId) {
+        var slideWindowWidth = $('#slide-window-plum').width();
+        var margin = slideWindowWidth * nextSlideId;
+
+        $('#slides-list-plum').css('transform', 'translate3d(-' + margin + 'px,0px,0px)');
+
+        $.global.item = nextSlideId;
+    }
+
+    
+      var autoSlide = parseInt("0", 10);
+      var autoSlideInterval;
+      function resetAutoSlide(){
+        if(autoSlide) {
+          if(autoSlideInterval) {
+            clearInterval(autoSlideInterval);
+          }
+          autoSlideInterval = setInterval(function(){
+            performSlide('forward');
+          }, autoSlide)
+        }
+      }
+      resetAutoSlide();
+});
 </script>
 
 
