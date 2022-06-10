@@ -238,7 +238,7 @@
 
 
 <style>
-#slide-window {
+#slide-window-plum {
     position: relative;
     width: 278px;
     height: 361px;
@@ -246,7 +246,27 @@
 
 }
 
-#slides-list {
+#slide-window-leaky {
+    position: relative;
+    width: 278px;
+    height: 361px;
+    overflow: hidden;
+
+}
+
+#slides-list-plum {
+    width: 278px;
+    height: 361px;
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    -webkit-transform: translate3d(0px, 0px, 0px);
+    transform: translate3d(0px, 0px, 0px);
+    transition: all 0.66s ease;
+    -webkit-transition: all 0.66s ease;
+}
+
+#slides-list-leaky {
     width: 278px;
     height: 361px;
     position: absolute;
@@ -325,14 +345,29 @@
     opacity: 1.0;
 }
 
-#left {
+#left-plum {
     left: -35%;
     display: inline-block;
     width: 40px;
 	background: transparent;
 }
 
-#right {
+#right-plum {
+    right: -35%;
+    display: inline-block;
+	background: transparent;
+    position: relative;
+    width: 40px;
+}
+
+#left-leaky {
+    left: -35%;
+    display: inline-block;
+    width: 40px;
+	background: transparent;
+}
+
+#right-leaky {
     right: -35%;
     display: inline-block;
 	background: transparent;
@@ -342,8 +377,8 @@
 </style>
 
 
-<div id="slide-window">
-    <ol id="slides-list">
+<div id="slide-window-leaky">
+    <ol id="slides-list-leaky">
                 <li class="slide-leaky" style="background-image:url(http://berwickity.com/leaky/leaky1.jpg);"></li>
                 <li class="slide-leaky" style="background-image:url(http://berwickity.com/leaky/leaky2.jpg);"></li>
                 <li class="slide-leaky" style="background-image:url(http://berwickity.com/leaky/leaky3.jpg);"></li>
@@ -353,7 +388,7 @@
     <span class="nav-leaky fa fa-chevron-right fa-2x" id="right"></span>
 </div>
 
-<div id="slide-window">
+<div id="slide-window-plum">
     <ol id="slides-list-plum">
                 <li class="slide-plum" style="background-image:url(http://berwickity.com/plums/plums1.jpg);"></li>
                 <li class="slide-plum" style="background-image:url(http://berwickity.com/plums/plums2.jpg);"></li>
@@ -372,22 +407,22 @@ sliderJQuery(function( $ ) {
     $.global.total = 0;
 
     $(document).ready(function () {
-        var slideWindowWidth = $('#slide-window').width();
-        var slideCount = $('#slides-list li').length;
+        var slideWindowWidth = $('#slide-window-plum').width();
+        var slideCount = $('#slides-list-plum li').length;
         var totalSlidesWidth = slideCount * slideWindowWidth;
 
         $.global.item = 0;
         $.global.total = slideCount;
 
         $('.slide-plum').css('width', slideWindowWidth + 'px');
-        $('#slides-list').css('width', totalSlidesWidth + 'px');
+        $('#slides-list-plum').css('width', totalSlidesWidth + 'px');
 
-        $('#left').click(function () {
+        $('#left-plum').click(function () {
             resetAutoSlide();
             performSlide('back');
         });
 
-        $('#right').click(function () {
+        $('#right-plum').click(function () {
             resetAutoSlide();
             performSlide('forward');
         });
@@ -415,10 +450,10 @@ sliderJQuery(function( $ ) {
     }
 
     function moveCss(nextSlideId) {
-        var slideWindowWidth = $('#slide-window').width();
+        var slideWindowWidth = $('#slide-window-plum').width();
         var margin = slideWindowWidth * nextSlideId;
 
-        $('#slides-list').css('transform', 'translate3d(-' + margin + 'px,0px,0px)');
+        $('#slides-list-plum').css('transform', 'translate3d(-' + margin + 'px,0px,0px)');
 
         $.global.item = nextSlideId;
     }
