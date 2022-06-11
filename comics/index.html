@@ -177,6 +177,75 @@
     position: relative;
     width: 40px;
 }
+
+#slide-window3 {
+    position: relative;
+    width: 278px;
+    height: 361px;
+    overflow: hidden;
+
+}
+
+#slides-list3 {
+    width: 278px;
+    height: 361px;
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    -webkit-transform: translate3d(0px, 0px, 0px);
+    transform: translate3d(0px, 0px, 0px);
+    transition: all 0.66s ease;
+    -webkit-transition: all 0.66s ease;
+}
+
+.slide3 {
+    list-style: none;
+    position: relative;
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 278px;
+    height: 361px;
+    background: #ccc;
+    text-align: center;
+    line-height: 100%;
+    background-size: cover;
+    background-position: 50% 50%;
+    color: #fff;
+    -webkit-transform: translate3d(0px, 0px, 0px);
+    -webkit-transform-style: preserve-3d;
+}
+
+.nav3 {
+    position: relative;
+    z-index: 9;
+    top: 65%;
+    cursor: pointer;
+    color: grey;
+    opacity: 0.7;
+    transition: all 0.66s ease;
+    -webkit-transition: all 0.66s ease;
+}
+
+.nav3:hover {
+    opacity: 1.0;
+}
+
+
+#left3 {
+    left: -35%;
+    display: inline-block;
+    width: 40px;
+	background: transparent;
+}
+
+#right3 {
+    right: -35%;
+    display: inline-block;
+	background: transparent;
+    position: relative;
+    width: 40px;
+}
 </style>
 
 
@@ -193,13 +262,24 @@
 
 <div id="slide-window2">
     <ol id="slides-list2">
-                <li class="slide2" style="background-image:url(http://berwickity.com/plums/plums1.jpg);"></li>
-                <li class="slide2" style="background-image:url(http://berwickity.com/plums/plums2.jpg);"></li>
-                <li class="slide2" style="background-image:url(http://berwickity.com/plums/plums3.jpg);"></li>
-                <li class="slide2" style="background-image:url(http://berwickity.com/plums/plums4.jpg);"></li>
+                <li class="slide2" style="background-image:url(http://berwickity.com/leaky/leaky1.jpg);"></li>
+                <li class="slide2" style="background-image:url(http://berwickity.com/leaky/leaky2.jpg);"></li>
+                <li class="slide2" style="background-image:url(http://berwickity.com/leaky/leaky3.jpg);"></li>
+                <li class="slide2" style="background-image:url(http://berwickity.com/leaky/leaky4.jpg);"></li>
     </ol>
     <span class="nav2 fa fa-chevron-left fa-2x" id="left2"></span>
     <span class="nav2 fa fa-chevron-right fa-2x" id="right2"></span>
+</div>
+
+<div id="slide-window3">
+    <ol id="slides-list3">
+                <li class="slide3" style="background-image:url(http://berwickity.com/war/war1.jpg);"></li>
+                <li class="slide3" style="background-image:url(http://berwickity.com/war/war2.jpg);"></li>
+                <li class="slide3" style="background-image:url(http://berwickity.com/war/war3.jpg);"></li>
+                <li class="slide3" style="background-image:url(http://berwickity.com/war/war4.jpg);"></li>
+    </ol>
+    <span class="nav3 fa fa-chevron-left fa-2x" id="left3"></span>
+    <span class="nav3 fa fa-chevron-right fa-2x" id="right3"></span>
 </div>
 
 
@@ -329,6 +409,79 @@ sliderJQuery2(function( $ ) {
         var margin = slideWindowWidth * nextSlideId;
 
         $('#slides-list2').css('transform', 'translate3d(-' + margin + 'px,0px,0px)');
+
+        $.global.item = nextSlideId;
+    }
+
+    
+      var autoSlide = parseInt("0", 10);
+      var autoSlideInterval;
+      function resetAutoSlide(){
+        if(autoSlide) {
+          if(autoSlideInterval) {
+            clearInterval(autoSlideInterval);
+          }
+          autoSlideInterval = setInterval(function(){
+            performSlide('forward');
+          }, autoSlide)
+        }
+      }
+      resetAutoSlide();
+});
+
+sliderJQuery3 = jQuery.noConflict();
+sliderJQuery3(function( $ ) {
+    $.global = new Object();
+    $.global.total = 0;
+
+    $(document).ready(function () {
+        var slideWindowWidth = $('#slide-window3').width();
+        var slideCount = $('#slides-list3 li').length;
+        var totalSlidesWidth = slideCount * slideWindowWidth;
+
+        $.global.item = 0;
+        $.global.total = slideCount;
+
+        $('.slide3').css('width', slideWindowWidth + 'px');
+        $('#slides-list3').css('width', totalSlidesWidth + 'px');
+
+        $('#left3').click(function () {
+            resetAutoSlide();
+            performSlide('back');
+        });
+
+        $('#right3').click(function () {
+            resetAutoSlide();
+            performSlide('forward');
+        });
+
+    });
+
+    function performSlide(direction) {
+        if (direction == 'back') {
+            var nextSlideId = $.global.item - 1;
+        }
+        if (direction == 'forward') {
+            var nextSlideId = $.global.item + 1;
+        }
+
+        if (nextSlideId == -1) {
+             
+            moveCss($.global.total - 1);
+        } else if (nextSlideId == $.global.total) {
+             
+            moveCss(0);
+        } else {
+             
+            moveCss(nextSlideId);
+        }
+    }
+
+    function moveCss(nextSlideId) {
+        var slideWindowWidth = $('#slide-window3').width();
+        var margin = slideWindowWidth * nextSlideId;
+
+        $('#slides-list3').css('transform', 'translate3d(-' + margin + 'px,0px,0px)');
 
         $.global.item = nextSlideId;
     }
