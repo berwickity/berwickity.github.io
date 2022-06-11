@@ -222,10 +222,10 @@
 
         jQuery(document).ready(function($) {
           $('#myCarousel').carousel({
-              interval: none
+              interval: false
           });
           $('#myCarousel2').carousel({
-              interval: none
+              interval: false
           });
         
           $('#carousel-text').html($('#slide-content-0').html());
@@ -254,20 +254,12 @@
           width: 278px;
           height: 361px;
         }
-        .thumbnail {
-          border: none;
+        #myCarousel2 {
+          margin-top: 30px;
+          width: 278px;
+          height: 361px;
         }
-        .thumbnails {
-          display: inline-flex;
-          width: 100%;
-        }
-        .thumbnails-center {
-          display: flex;
-          margin: 0 auto;
-        }
-        .cursor {
-          cursor: pointer;
-        } 
+     
 
     </style>
         
@@ -342,18 +334,7 @@
                       </div>
                   </div>
                   <!--/Slider-->
-                  <div class="row hidden-phone" id="slider-thumbs">
-                      <!-- Bottom switcher of slider -->
-                      <div class="thumbnails">
-                          <div class="thumbnails-center">
-                              <a class="thumbnail cursor" id="carousel-selector-0"><img src="http://placehold.it/170x100&text=one"></a>
-                              <a class="thumbnail cursor" id="carousel-selector-1"><img src="http://placehold.it/170x100&text=two"></a>
-                              <a class="thumbnail cursor" id="carousel-selector-2"><img src="http://placehold.it/170x100&text=three"></a>
-                              <a class="thumbnail cursor" id="carousel-selector-3"><img src="http://placehold.it/170x100&text=four"></a>
-                              <a class="thumbnail cursor" id="carousel-selector-4"><img src="http://placehold.it/170x100&text=five"></a>
-                          </div>
-                      </div>
-                  </div>
+         
               </div>
           </div>    
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
