@@ -462,7 +462,7 @@
     <span class="nav2 fa fa-chevron-right fa-2x" id="right2"></span>
 </div>
 <br>
-<hi>This is just to say</hi>
+<h6>This is just to say</h6>
 <div id="slide-window">
     <ol id="slides-list">
                 <li class="slide" style="background-image:url(http://berwickity.com/plums/plums1.jpg);"></li>
@@ -611,10 +611,10 @@ sliderJQuery2(function( $ ) {
     }
 
     function moveCss(nextSlideId) {
-        var slideWindowWidth = $('#slide-window2').width();
-        var margin = slideWindowWidth * nextSlideId;
+        var slideWindowWidth2 = $('#slide-window2').width();
+        var margin2 = slideWindowWidth2 * nextSlideId;
 
-        $('#slides-list2').css('transform', 'translate3d(-' + margin + 'px,0px,0px)');
+        $('#slides-list2').css('transform', 'translate3d(-' + margin2 + 'px,0px,0px)');
 
         $.global.item = nextSlideId;
     }
