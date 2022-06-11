@@ -222,10 +222,10 @@
 
         jQuery(document).ready(function($) {
           $('#myCarousel').carousel({
-              interval: 4000, AutoPlay: false
+              interval: false, AutoPlay: false
           });
           $('#myCarousel2').carousel({
-              interval: 4000, AutoPlay: false
+              interval: false, AutoPlay: false
           });
         
           $('#carousel-text').html($('#slide-content-0').html());
@@ -250,6 +250,10 @@
           margin-top: 30px;
           width: 278px;
           height: 361px;
+        }
+
+        .carousel-control.left, .carousel-control.right {
+        background-image: none
         }
      
 
