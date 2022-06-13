@@ -2,13 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Bernice Wicks Comics</title>
-    <link>https://berwickity.github.io/categories/</link>
+    <link>www.berwickity.com/categories/</link>
     <description>Recent content in Categories on Bernice Wicks Comics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>© Bernice Wicks 2021</copyright>
     
-	<atom:link href="https://berwickity.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="www.berwickity.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>
