@@ -1,0 +1,52 @@
+baseURL = "https://berwickity.github.io/"
+languageCode = "en-us"
+title = "Bernice Wicks Comics"
+theme = "hugo-theme-casper"
+paginate = 2
+Copyright = "© Bernice Wicks 2021"
+canonifyurls = true
+
+[params]
+  description = "comics in negatives and positives"
+  cover = "images/tree.jpg" 
+  ##save the image you want to use as background picture in directory "./static/images"
+  author = "Bernice Wicks"
+  authorlocation = "authorlocation"
+  logo = "images/wren.png" 
+  ##save the image you want to use as website logo in directory "./static/images"
+  githubName = "berwickity"
+  email = "berwickity@gmail.com"
+  instagramName = "_berwickity"
+  
+  hideHUGOSupport = false
+
+[[menu.main]]  # here are the buttons on the menu 
+  name = "Home" # Button will display as "Home"
+  weight = 100 # the weight decides the position of the button (higher or lower)
+  identifier = "home"
+  pre = "<br />" 
+  url = "/"
+
+[[menu.main]]
+  name = "About"
+  weight = 0
+  identifier = "about" 
+  # this button will refer to a markdown file named "about" in the content folder
+  pre = "<br />"
+  url = "/about"
+
+[[menu.main]]
+  name = "Blog"
+  identifier = "blog"
+   # this page will refer to a markdown file named "blog" in the content folder
+  pre = "<br />"
+  url = "/post"
+  weight = 40
+  
+[permalinks]
+  post = "/:slug/"
+
+[sitemap]
+  ChangeFreq = ""
+  Filename = "sitemap.xml"
+  Priority = "-1"
